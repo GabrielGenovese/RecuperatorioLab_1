@@ -76,10 +76,10 @@ int ingresoDatosTrabajo(eTrabajo *trabajos,int posicion, int* idTrabajo, int idS
 
 void tituloTrabajo()
 {
-	printf("\n%10s","ID|");
-	printf("%20s","Marca|");
-	printf("%20s","Servicio|");
-	printf("%10s","Fecha|\n");
+	printf("\n%10s|","ID");
+	printf("%20s|","Marca");
+	printf("%10s|","Fecha");
+	printf("%20s|","ID Servicio");
 }
 
 int imprimeFecha(eFecha *Fecha)
@@ -88,7 +88,7 @@ int imprimeFecha(eFecha *Fecha)
 
 	if(Fecha != NULL)
 	{
-		printf("%2d/%2d/%4d|\n",(*Fecha).dia,(*Fecha).Mes,(*Fecha).Anio);
+		printf("%2d/%2d/%4d|",(*Fecha).dia,(*Fecha).Mes,(*Fecha).Anio);
 	}
 
 	return retorno;
@@ -102,8 +102,8 @@ int imprimeUnTrabajo(eTrabajo *trabajos, int posicion)
 	{
 		printf("\n%10d|",trabajos[posicion].idTrabajo);
 		printf("%20s|",trabajos[posicion].marcaBicicleta);
-		printf("%20d|",trabajos[posicion].idServicio);
 		imprimeFecha(&trabajos[posicion].fecha);
+		printf("%20d|",trabajos[posicion].idServicio);
 
 		retorno = 0;
 	}
@@ -232,12 +232,11 @@ int ordenaPorAnioYMarca (eTrabajo *trabajos,int cantidadElementos, int orden)
 	return retorno;
 }
 
-int listarTrabajos(eTrabajo *trabajos,int cantidadElementos,int orden)
+int listarTrabajos(eTrabajo *trabajos,int cantidadElementos)
 {
 	int retorno = -1;
 	if(trabajos != NULL && cantidadElementos >0)
 	{
-		ordenaPorAnioYMarca(trabajos,cantidadElementos,orden);
 		tituloTrabajo();
 		for(int i = 0; i < cantidadElementos;i++)
 		{

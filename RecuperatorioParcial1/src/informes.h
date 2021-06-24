@@ -3,4 +3,6 @@
 
 int totalServiciosPrestados(eTrabajo *aTrabajos,int cantidadTrabajos, eServicio *aServicios,int cantidadServicios);
 
+int listarTrabajosConDescripcionServicio(eTrabajo *trabajos,int cantidadTrabajos,eServicio *aServicios,int cantidadServicios);
+
 #endif

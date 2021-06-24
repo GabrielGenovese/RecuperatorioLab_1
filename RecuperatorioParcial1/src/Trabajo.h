@@ -118,9 +118,9 @@ int ordenaPorAnioYMarca (eTrabajo *trabajos,int cantidadElementos, int orden);
 /*brief ordena e imprime todos los trabajos de un array de tipo eTrabajo
  * param1 eTrabajo* trabajos, array a ordenar e imprimir.
  * param2 int cantidadElementos, cantidad de elementos del array.
- * param3 orden en el que se ordenara el array.
+
  * */
-int listarTrabajos(eTrabajo *trabajos,int cantidadElementos,int orden);
+int listarTrabajos(eTrabajo *trabajos,int cantidadElementos);
 
 
 /*********************************************MANIULACIONES DE LA SEGUNDA ESTRUCTURA***********************************/

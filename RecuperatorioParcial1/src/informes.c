@@ -29,4 +29,34 @@ int totalServiciosPrestados(eTrabajo *aTrabajos,int cantidadTrabajos, eServicio 
 
 	return retorno;
 }
+void tituloTrabajoConServicio()
+{
+	tituloTrabajo();
+	printf("%25s|","Descripcion Servicio\n");
+}
 
+
+int listarTrabajosConDescripcionServicio(eTrabajo *trabajos,int cantidadTrabajos,eServicio *aServicios,int cantidadServicios)
+{
+	int retorno = -1;
+	if(trabajos != NULL && cantidadTrabajos >0)
+	{
+		tituloTrabajoConServicio();
+		for(int i = 0; i < cantidadTrabajos;i++)
+		{
+			if(!(*(trabajos+i)).isEmpty)
+			{
+				imprimeUnTrabajo(trabajos,i);
+				for(int j = 0; j <cantidadServicios;j++)
+				{
+					if((*(aServicios+j)).idServicio == (*(trabajos+i)).idServicio)
+					{
+						printf("%25s|",(*(aServicios+j)).descripcion);
+					}
+				}
+			}
+		}
+		retorno = 0;
+	}
+	return retorno;
+}

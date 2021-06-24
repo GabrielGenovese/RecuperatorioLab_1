@@ -123,14 +123,15 @@ int main(void) {
 				switch(opcionSecundaria)
 				{
 				case 1:
-					listarTrabajos(trabajos,TRABAJOS,1);
+					ordenaPorAnioYMarca(trabajos,TRABAJOS,1);
 					break;
 				case 2:
-					listarTrabajos(trabajos,TRABAJOS,0);
+					ordenaPorAnioYMarca(trabajos,TRABAJOS,0);
 					break;
 				case 3:
 					break;
 				}
+				listarTrabajosConDescripcionServicio(trabajos,TRABAJOS,servicios,SERVICIOS);
 			}
 			else
 			{
