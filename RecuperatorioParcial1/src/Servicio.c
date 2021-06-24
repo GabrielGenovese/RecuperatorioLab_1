@@ -49,7 +49,7 @@ int ingresoDatosServicio(eServicio *aServicios,int posicion, int* idServicio)
 	{
 		aServicios[posicion].idServicio = *idServicio;
 
-		validacionStringAlpha(aServicios[posicion].descripcion,"Ingrese la descripcion del servicio: ",25);
+		validacionStringAlpha(aServicios[posicion].descripcion,"Ingrese la descripcion del servicio: ",25,"Error, Ingrese una descripcion correcta\n");
 		validacionNumeroFloatConMinMax(&aServicios[posicion].precio,0,1000000,"Ingrese el precio del servicio: ","Ingrese un numero Correcto: ");
 
 		aServicios[posicion].isEmpty = 0;
@@ -144,7 +144,7 @@ int buscarIdServicioPorDescripcion(eServicio *aServicios,int cantidadElementos, 
 
 	if(aServicios != NULL && id != NULL && cantidadElementos > 0 && mensaje != NULL)
 	{
-		validacionStringAlpha(descripcionServicio,mensaje,25);
+		validacionStringAlpha(descripcionServicio,mensaje,25,"Error, ");
 		strlwr(descripcionServicio);
 		for(int i = 0; i < cantidadElementos; i++)
 		{

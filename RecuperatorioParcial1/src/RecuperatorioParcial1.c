@@ -16,6 +16,7 @@ int main(void) {
 	int opcionSecundaria = 0;
 	int idServicioDeTrabajo;
 	int idTrabajo = 1;
+	//int idServicios = 2004;
 	int indiceTrabajo;
 	int posicionID;
 	int trabajoIngresado = 0;
@@ -27,12 +28,7 @@ int main(void) {
 			{2003,"Cadena",350,0}
 	};
 
-	eTrabajo trabajos[TRABAJOS] = {
-			{1,"toyota",26,2000,{28,12,2000},0},
-			{2,"motor",25,2001,{28,12,2000},0},
-			{3,"movis",26,2003,{28,12,2015},0},
-			{4,"roche",26,2002,{28,12,2007},0}
-	};
+	eTrabajo trabajos[TRABAJOS];
 
 	inicializacionTrabajo(trabajos,TRABAJOS);
 	inicializacionServicio(servicios,SERVICIOS);
@@ -40,10 +36,6 @@ int main(void) {
 	(*(servicios+1)).isEmpty = 0;
 	(*(servicios+2)).isEmpty = 0;
 	(*(servicios+3)).isEmpty = 0;
-	(*(trabajos+0)).isEmpty = 0;
-	(*(trabajos+1)).isEmpty = 0;
-	(*(trabajos+2)).isEmpty = 0;
-	(*(trabajos+3)).isEmpty = 0;
 
 	do{
 		menuPrincipal(&opcion,"Opcion: ");
@@ -57,7 +49,7 @@ int main(void) {
 			}
 			else
 			{
-				printf("Servicio Inexistente");
+				printf("Servicio Inexistente\n");
 			}
 			break;
 		case 2:
@@ -71,7 +63,7 @@ int main(void) {
 						switch(opcionSecundaria)
 						{
 						case 1:
-							validacionStringAlpha((*(trabajos+posicionID)).marcaBicicleta,"Ingrese la nueva marca de la bicicleta: ",21);
+							validacionStringAlpha((*(trabajos+posicionID)).marcaBicicleta,"Ingrese la nueva marca de la bicicleta: ",21,"Error, ");
 							imprimeUnTrabajo(trabajos,posicionID);
 							break;
 						case 2:
@@ -84,19 +76,19 @@ int main(void) {
 						case 3:
 							break;
 						default:
-							printf("Opcion Invalida");
+							printf("Opcion Invalida\n");
 							break;
 						}
 					}while(opcionSecundaria != 3);
 				}
 				else
 				{
-					printf("ID INVALIDO");
+					printf("ID INVALIDO\n");
 				}
 			}
 			else
 			{
-				printf("NO HAY TRABAJOS INGRESADOS");
+				printf("NO HAY TRABAJOS INGRESADOS\n");
 			}
 
 			break;
@@ -105,16 +97,20 @@ int main(void) {
 			{
 				if(!buscarIdTrabajo(trabajos,TRABAJOS,&indiceTrabajo,"Ingrese el id del trabajo a dar de baja: "))
 				{
-					bajaLogicaTrabajo(trabajos,indiceTrabajo);
+					imprimeUnTrabajo(trabajos,indiceTrabajo);
+					if(!bajaLogicaTrabajo(trabajos,indiceTrabajo))
+					{
+						printf("Trabajo borrado correctamente\n");
+					}
 				}
 				else
 				{
-					printf("ID INVALIDO");
+					printf("ID INVALIDO\n");
 				}
 			}
 			else
 			{
-				printf("NO HAY TRABAJOS INGRESADOS");
+				printf("NO HAY TRABAJOS INGRESADOS\n");
 			}
 			break;
 		case 4:
@@ -138,7 +134,7 @@ int main(void) {
 			}
 			else
 			{
-				printf("NO HAY TRABAJOS INGRESADOS");
+				printf("NO HAY TRABAJOS INGRESADOS\n");
 			}
 
 			break;
@@ -152,17 +148,15 @@ int main(void) {
 			}
 			else
 			{
-				printf("NO HAY TRABAJADORES INGRESADOS");
+				printf("NO HAY TRABAJADORES INGRESADOS\n");
 			}
-
 			break;
 		case 7:
 			break;
 		default:
-			printf("Opcion Invalida");
+			printf("Opcion Invalida\n");
 			break;
 		}
-
 	}while(opcion != 7);
 
 	return EXIT_SUCCESS;

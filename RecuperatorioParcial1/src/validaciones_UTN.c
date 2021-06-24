@@ -120,7 +120,7 @@ int validacionCaracterFijos(char* caracter, char mensaje[],char opcion1, char op
 }
 
 
-int validacionStringAlpha(char string[], char mensaje[],int cantidadArray)
+int validacionStringAlpha(char string[], char mensaje[],int cantidadArray, char error[])
 {
 	char auxiliar[cantidadArray];
 	int retorno = -1;
@@ -132,6 +132,7 @@ int validacionStringAlpha(char string[], char mensaje[],int cantidadArray)
 
 		do
 		{
+			contadorNumeros = 0;
 			printf("%s",mensaje);
 			fflush(stdin);
 			gets(auxiliar);
@@ -139,20 +140,24 @@ int validacionStringAlpha(char string[], char mensaje[],int cantidadArray)
 
 			if(longitud > cantidadArray-1)
 			{
-				printf("No debe sobrepasar los 21 caracteres.");
+				printf("No debe sobrepasar los %d caracteres.", cantidadArray);
 			}
 			else
 			{
 				for(int i = 0; i < longitud; i++ )
 				{
-					if(!isalpha(auxiliar[i]))
+					if(!isalpha(auxiliar[i]) || auxiliar[i] == ' ')
 					{
 						contadorNumeros++;
 					}
 				}
+				if(contadorNumeros)
+				{
+					printf("%s",error);
+				}
 			}
 
-		}while(longitud > cantidadArray-1 && !contadorNumeros );
+		}while(longitud > cantidadArray-1 || contadorNumeros > 0 );
 
 		strcpy(string,auxiliar);
 		retorno = 0;

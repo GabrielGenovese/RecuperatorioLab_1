@@ -55,7 +55,7 @@ int ingresoDatosTrabajo(eTrabajo *trabajos,int posicion, int* idTrabajo, int idS
 	{
 		trabajos[posicion].idTrabajo = *idTrabajo;
 
-		validacionStringAlpha((*(trabajos+posicion)).marcaBicicleta,"Ingrese la marca de la bicicleta: ",21);
+		validacionStringAlpha((*(trabajos+posicion)).marcaBicicleta,"Ingrese la marca de la bicicleta: ",21,"Error,");
 		trabajos[posicion].idServicio = idServicio;
 		validacionNumeroEnteroConMinMax(&(*(trabajos+posicion)).fecha.dia,1,30,"Ingrese el dia: ","Porfavor Ingrese un dia Correcto: ");
 		validacionNumeroEnteroConMinMax(&(*(trabajos+posicion)).fecha.Mes,1,12,"Ingrese el mes: ","Porfavor Ingrese un mes Correcto: ");
