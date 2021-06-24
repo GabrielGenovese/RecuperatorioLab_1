@@ -14,12 +14,13 @@ int main(void) {
 
 	int opcion;
 	int opcionSecundaria = 0;
+	int orden;
 	int idServicioDeTrabajo;
 	int idTrabajo = 1;
 	//int idServicios = 2004;
 	int indiceTrabajo;
 	int posicionID;
-	int trabajoIngresado = 0;
+	int trabajoIngresado = 1;
 
 	eServicio servicios[SERVICIOS] = {
 			{2000,"Limpieza",250,0},
@@ -28,7 +29,13 @@ int main(void) {
 			{2003,"Cadena",350,0}
 	};
 
-	eTrabajo trabajos[TRABAJOS];
+	eTrabajo trabajos[TRABAJOS] = {
+			{1,"yoyo",26,2000,{28,12,2000},0},
+			{2,"maraca",26,2002,{28,12,2001},0},
+			{3,"porra",26,2001,{28,12,2002},0},
+			{4,"alert",26,2002,{28,12,2021},0},
+			{5,"cachi",26,2000,{28,12,2008},0}
+	};
 
 	inicializacionTrabajo(trabajos,TRABAJOS);
 	inicializacionServicio(servicios,SERVICIOS);
@@ -36,6 +43,11 @@ int main(void) {
 	(*(servicios+1)).isEmpty = 0;
 	(*(servicios+2)).isEmpty = 0;
 	(*(servicios+3)).isEmpty = 0;
+	(*(trabajos+0)).isEmpty = 0;
+	(*(trabajos+1)).isEmpty = 0;
+	(*(trabajos+2)).isEmpty = 0;
+	(*(trabajos+3)).isEmpty = 0;
+	(*(trabajos+4)).isEmpty = 0;
 
 	do{
 		menuPrincipal(&opcion,"Opcion: ");
@@ -118,15 +130,19 @@ int main(void) {
 			{
 				do
 				{
-					menuAscDesc(&opcionSecundaria,"Opcion: ");
-				}while(opcionSecundaria < 1 || opcionSecundaria > 3 );
+					menuInformes(&opcionSecundaria,"Opcion: ");
+				}while(opcionSecundaria < 1 || opcionSecundaria > 3);
+				do
+				{
+					menuAscDesc(&orden,"Opcion: ");
+				}while(orden < 0 || orden > 1 );
 				switch(opcionSecundaria)
 				{
 				case 1:
-					ordenaPorAnioYMarca(trabajos,TRABAJOS,1);
+					ordenaPorAnioYMarca(trabajos,TRABAJOS,orden);
 					break;
 				case 2:
-					ordenaPorAnioYMarca(trabajos,TRABAJOS,0);
+					ordenaPorMarca(trabajos,TRABAJOS,orden);
 					break;
 				case 3:
 					break;
@@ -153,12 +169,22 @@ int main(void) {
 			}
 			break;
 		case 7:
+			if(trabajoIngresado)
+			{
+				buscaEImprimeServicioMasUsado(trabajos,TRABAJOS,servicios,SERVICIOS);
+			}
+			else
+			{
+				printf("NO HAY TRABAJADORES INGRESADOS\n");
+			}
+			break;
+		case 8:
 			break;
 		default:
 			printf("Opcion Invalida\n");
 			break;
 		}
-	}while(opcion != 7);
+	}while(opcion != 8);
 
 	return EXIT_SUCCESS;
 }

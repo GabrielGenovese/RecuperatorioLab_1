@@ -232,6 +232,31 @@ int ordenaPorAnioYMarca (eTrabajo *trabajos,int cantidadElementos, int orden)
 	return retorno;
 }
 
+int ordenaPorMarca(eTrabajo *trabajos,int cantidadElementos, int orden)
+{
+	int retorno = -1;
+	eTrabajo Aux;
+
+	if(trabajos != NULL && cantidadElementos > 0 && (orden == 0 || orden == 1))
+	{
+		for(int i = 0; i < cantidadElementos -1; i++)
+				{
+					for(int j = i+1; j < cantidadElementos; j++)
+					{
+						if((orden && strcmp((*(trabajos+i)).marcaBicicleta,(*(trabajos+j)).marcaBicicleta) == 1) || (!orden && strcmp((*(trabajos+i)).marcaBicicleta,(*(trabajos+j)).marcaBicicleta) == -1))
+						{
+							Aux = *(trabajos+i);
+							*(trabajos+i) = *(trabajos+j);
+							*(trabajos+j) = Aux;
+							retorno = 0;
+						}
+
+					}
+				}
+	}
+	return retorno;
+}
+
 int listarTrabajos(eTrabajo *trabajos,int cantidadElementos)
 {
 	int retorno = -1;

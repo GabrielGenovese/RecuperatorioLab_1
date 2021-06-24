@@ -7,4 +7,6 @@ int menuModificar(int* opcElegida, char mensaje[]);
 
 int menuAscDesc(int* opcElegida, char mensaje[]);
 
+int menuInformes(int* opcElegida, char mensaje[]);
+
 #endif /* MENUS_H_ */

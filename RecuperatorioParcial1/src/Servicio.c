@@ -81,7 +81,7 @@ int imprimeUnServicio(eServicio *aServicios, int posicion)
 	{
 		printf("\n%10d|",(*(aServicios+posicion)).idServicio);
 		printf("%20s|",(*(aServicios+posicion)).descripcion);
-		printf("%20.2f|\n",(*(aServicios+posicion)).precio);
+		printf("%20.2f|",(*(aServicios+posicion)).precio);
 
 		retorno = 0;
 	}

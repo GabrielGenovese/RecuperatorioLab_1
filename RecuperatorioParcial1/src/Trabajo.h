@@ -123,6 +123,8 @@ int ordenaPorAnioYMarca (eTrabajo *trabajos,int cantidadElementos, int orden);
 int listarTrabajos(eTrabajo *trabajos,int cantidadElementos);
 
 
+int ordenaPorMarca(eTrabajo *trabajos,int cantidadElementos, int orden);
+
 /*********************************************MANIULACIONES DE LA SEGUNDA ESTRUCTURA***********************************/
 
 
