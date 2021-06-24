@@ -20,7 +20,7 @@ int main(void) {
 	//int idServicios = 2004;
 	int indiceTrabajo;
 	int posicionID;
-	int trabajoIngresado = 1;
+	int trabajoIngresado = 0;
 
 	eServicio servicios[SERVICIOS] = {
 			{2000,"Limpieza",250,0},
@@ -29,13 +29,13 @@ int main(void) {
 			{2003,"Cadena",350,0}
 	};
 
-	eTrabajo trabajos[TRABAJOS] = {
+	eTrabajo trabajos[TRABAJOS];/* = {
 			{1,"yoyo",26,2000,{28,12,2000},0},
 			{2,"maraca",26,2002,{28,12,2001},0},
 			{3,"porra",26,2001,{28,12,2002},0},
 			{4,"alert",26,2002,{28,12,2021},0},
 			{5,"cachi",26,2000,{28,12,2008},0}
-	};
+	};*/
 
 	inicializacionTrabajo(trabajos,TRABAJOS);
 	inicializacionServicio(servicios,SERVICIOS);
@@ -43,12 +43,12 @@ int main(void) {
 	(*(servicios+1)).isEmpty = 0;
 	(*(servicios+2)).isEmpty = 0;
 	(*(servicios+3)).isEmpty = 0;
-	(*(trabajos+0)).isEmpty = 0;
+	/*(*(trabajos+0)).isEmpty = 0;
 	(*(trabajos+1)).isEmpty = 0;
 	(*(trabajos+2)).isEmpty = 0;
 	(*(trabajos+3)).isEmpty = 0;
 	(*(trabajos+4)).isEmpty = 0;
-
+	*/
 	do{
 		menuPrincipal(&opcion,"Opcion: ");
 		switch(opcion)
